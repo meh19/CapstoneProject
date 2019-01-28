@@ -37,7 +37,6 @@ create table County
 (
 	countyNum int not null auto_increment primary key ,
 	countyName char(50) null,
-	zip int,
 	state int,
 	county char(75),
 	foreign key (state) references State(StateNum)
@@ -58,6 +57,7 @@ create table Location
 	Street char (50),
 	city char (50),
 	countyNum int not null,
+	zip int,
 	isTerminal char (5),
 	foreign key (site) references SiteTypes(SiteTypeNum),
 	foreign key (countyNum) references County(countyNum)
@@ -74,3 +74,15 @@ create table Idle
 	foreign key(locationNum) references Location(locationNum),
 	foreign key(driver) references Driver(driverRef)
  );
+
+create table Users(
+	userId int primary key auto_increment not null,
+	userName char(50) not null
+);
+
+create table Passwords(
+	passwordID int auto_increment not null  primary key,
+	password char(20) # may need to change this type for encription
+);
+
+
